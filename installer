@@ -13,7 +13,7 @@ if [[ "$response" == "y" ]]; then
     # Torna alla directory precedente
     cd ..
     # Rimuovi la directory clonata
-    mv c_formatter_42 ~/power42
+    mkdir ~/power42 && mv c_formatter_42 ~/power42/plugin
     echo "Installazione completata"
 else
     echo "Installazione annullata."
