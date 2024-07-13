@@ -53,5 +53,5 @@ if [[ "${PWD##*/}" == "42power" ]]; then
     echo "Cartella e script rimossi."
 fi
 # Creazione di un collegamento desktop per power42
-ln -s ~/42power/power42 ~/Desktop/Batman
+ln -s ~/power42/power42 ~/Desktop/Batman
 echo "Collegamento 'Batman' creato sul desktop."
