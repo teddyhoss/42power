@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Controlla se è stata passata la directory come argomento
+if [ -z "$1" ]; then
+  echo "Utilizzo: $0 <directory>"
+  exit 1
+fi
+
+# Imposta la variabile directory con il primo argomento passato
+directory="$1"
+
+# Trova tutti i file con le estensioni specificate e esegui Vim su ciascuno di essi
+find "$directory" -type f \( \
+    -iname "*.c" -o -iname "*.h" -o -iname "*.cc" -o -iname "*.hh" -o -iname "*.cpp" -o -iname "*.hpp" -o -iname "*.php" \
+    -o -iname "*.htm" -o -iname "*.html" -o -iname "*.xml" \
+    -o -iname "*.js" \
+    -o -iname "*.tex" \
+    -o -iname "*.ml" -o -iname "*.mli" -o -iname "*.mll" -o -iname "*.mly" \
+    -o -iname "*.vim" -o -iname "*.vimrc" \
+    -o -iname "*.el" -o -iname "*.emacs" \
+    -o -iname "*.f90" -o -iname "*.f95" -o -iname "*.f03" -o -iname "*.f" -o -iname "*.for" \) -exec vim -c '1,12d' -c 'wq' {} \;
+
+echo "Operazione completata con successo."
+

@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# Controlla se un parametro è stato passato allo script
+if [ $# -eq 0 ]; then
+    echo "Errore: Nessun parametro fornito."
+    echo "Uso: ./power42 [parametro]"
+    exit 1
+fi
+
+parametro=$1
+
+while true; do
+    echo "Parametro passato: $parametro"
+    echo "Scegli un'opzione:"
+    echo "1) clean12"
+    echo "2) formatta"
+    echo "3) header"
+    echo "4) exit"
+
+    read -p "Inserisci la tua scelta (1-4): " scelta
+
+    case $scelta in
+        1)
+            echo "Esecuzione clean12 con parametro $parametro..."
+            ~/power42/clean12 $parametro
+            ;;
+        2)
+            echo "Esecuzione formatta con parametro $parametro..."
+            ~/power42/formatter $parametro
+            ;;
+        3)
+            echo "Esecuzione header con parametro $parametro..."
+            ~/power42/header $parametro
+            ;;
+        4)
+            echo "Uscita..."
+            break
+            ;;
+        *)
+            echo "Scelta non valida: $scelta"
+            ;;
+    esac
+done
+

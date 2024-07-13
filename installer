@@ -1,0 +1,54 @@
+#!/bin/bash
+
+# Chiedi all'utente se desidera installare il formatter
+read -p "Vuoi installare il formatter? (y/n) " response
+
+if [[ "$response" == "y" ]]; then
+    # Clona il repository
+    git clone https://github.com/cacharle/c_formatter_42
+    # Cambia directory
+    cd c_formatter_42
+    # Installa il pacchetto
+    pip3 install -e .
+    # Torna alla directory precedente
+    cd ..
+    # Rimuovi la directory clonata
+    rm -rf c_formatter_42
+    echo "Installazione completata e file rimossi."
+else
+    echo "Installazione annullata."
+fi
+
+# Chiedi all'utente se desidera aggiungere gli alias a zshrc
+read -p "Vuoi aggiungere gli alias a zshrc? (y/n) " add_alias
+
+if [[ "$add_alias" == "y" ]]; then
+    # Clona la cartella power42 nella home directory
+    git clone https://github.com/teddyhoss/42power ~/power42  # Sostituire con il link corretto del repository
+
+    # Assicurati che gli script siano eseguibili
+    chmod +x ~/power42/clean12
+    chmod +x ~/power42/formatter
+    chmod +x ~/power42/header
+    chmod +x ~/power42/power42
+
+    # Aggiungi alias a .zshrc
+    {
+        echo 'alias clean12="~/power42/clean12"'
+        echo 'alias formatta="~/power42/formatter"'
+        echo 'alias header="~/power42/header"'
+        echo 'alias power42="~/power42/power42"'
+    } >> ~/.zshrc
+
+    echo "Alias aggiunti a .zshrc con i permessi appropriati."
+fi
+
+# Verifica se la directory corrente si chiama 42power e cancella la cartella e lo script
+if [[ "${PWD##*/}" == "42power" ]]; then
+    echo "Eliminazione di questa cartella e dello script in corso..."
+    # Vai alla directory superiore
+    cd ..
+    # Rimuovi la directory 42power
+    rm -rf 42power
+    echo "Cartella e script rimossi."
+fi
