@@ -14,4 +14,3 @@ filename="$1"
 
 # Esecuzione del comando python con il modulo c_formatter_42 passando il file come argomento
 python3 -m c_formatter_42 "$filename"
-hmeah/plugin42/plugin
