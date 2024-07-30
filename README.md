@@ -1,4 +1,4 @@
-# 42power Installation and Usage Guide
+# 42power Installation and Usage Guide aka BATMAN
 
 This repository contains scripts to enhance your development environment with useful tools and aliases for 42 school projects.
 
